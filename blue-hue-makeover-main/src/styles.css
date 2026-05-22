@@ -1,0 +1,124 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar-bg: var(--sidebar-bg);
+  --color-sidebar-fg: var(--sidebar-fg);
+  --color-sidebar-muted: var(--sidebar-muted);
+  --color-sidebar-active: var(--sidebar-active);
+  --color-teal: var(--teal);
+  --color-teal-foreground: var(--teal-foreground);
+  --color-warn: var(--warn);
+  --color-success: var(--success);
+  --color-stage-cold: var(--stage-cold);
+  --color-stage-brochure: var(--stage-brochure);
+  --color-stage-proposal: var(--stage-proposal);
+  --color-stage-costing: var(--stage-costing);
+  --color-stage-negotiation: var(--stage-negotiation);
+  --color-stage-won: var(--stage-won);
+  --color-stage-lost: var(--stage-lost);
+}
+
+:root {
+  --radius: 0.625rem;
+
+  /* B2B SaaS — Deep Slate Blue + Electric Teal */
+  --background: oklch(0.985 0.005 240);
+  --foreground: oklch(0.22 0.04 250);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.04 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.04 250);
+
+  --primary: oklch(0.45 0.18 250);          /* Vivid blue */
+  --primary-foreground: oklch(0.99 0 0);
+
+  --secondary: oklch(0.94 0.03 250);
+  --secondary-foreground: oklch(0.3 0.12 255);
+
+  --muted: oklch(0.96 0.02 250);
+  --muted-foreground: oklch(0.5 0.06 255);
+
+  --accent: oklch(0.9 0.07 240);
+  --accent-foreground: oklch(0.28 0.12 255);
+
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+
+  --border: oklch(0.9 0.025 250);
+  --input: oklch(0.9 0.025 250);
+  --ring: oklch(0.6 0.16 250);
+
+  /* Sidebar (deep blue) */
+  --sidebar-bg: oklch(0.24 0.08 255);
+  --sidebar-fg: oklch(0.96 0.02 240);
+  --sidebar-muted: oklch(0.7 0.05 245);
+  --sidebar-active: oklch(0.5 0.18 250);
+
+  /* Bright sky-blue accent (replaces teal) */
+  --teal: oklch(0.68 0.16 240);
+  --teal-foreground: oklch(0.99 0 0);
+
+  --warn: oklch(0.78 0.16 70);
+  --success: oklch(0.65 0.16 150);
+
+  /* Pipeline stage colors — blue family */
+  --stage-cold: oklch(0.72 0.04 250);          /* pale blue-gray */
+  --stage-brochure: oklch(0.68 0.14 235);      /* sky */
+  --stage-proposal: oklch(0.55 0.18 250);      /* blue */
+  --stage-costing: oklch(0.42 0.18 258);       /* deep blue */
+  --stage-negotiation: oklch(0.55 0.16 220);   /* cyan-blue */
+  --stage-won: oklch(0.6 0.18 230);            /* azure */
+  --stage-lost: oklch(0.45 0.08 250);          /* muted navy */
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 oklch(0.6 0.22 25 / 0.6); }
+  70% { box-shadow: 0 0 0 8px oklch(0.6 0.22 25 / 0); }
+  100% { box-shadow: 0 0 0 0 oklch(0.6 0.22 25 / 0); }
+}
+.pulse-red { animation: pulse-ring 1.8s infinite; }
+
+@keyframes pulse-border-red {
+  0%, 100% { border-color: oklch(0.6 0.22 25 / 0.5); }
+  50% { border-color: oklch(0.6 0.22 25 / 1); }
+}
+.border-pulse-red { animation: pulse-border-red 1.8s infinite; }
